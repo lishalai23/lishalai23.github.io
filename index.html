@@ -1,0 +1,108 @@
+<!doctype html>
+<!--
+  ============================================================
+  首页 index.html
+  · 首屏通栏大横幅 + 一句话简介 + 唯一入口「查看作品」
+  · 替换首页大图：把 images/cover.svg 换成你的照片
+    （例如 cover.jpg 放入 images/ 后，改下方 src 即可）
+  ============================================================
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="城市人文摄影与文字创作——在城市里慢慢走，记下快要消失的风景和故事" />
+    <title data-i18n="t.index">城市漫步手记 · Lisha Lai</title>
+    <!-- 中文字体：Noto Serif SC（大标题）+ Noto Sans SC（正文）；中国大陆使用官方 .cn 字体源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.cn" />
+    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+    <link
+      href="https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=202611043" />
+  </head>
+  <body>
+    <!-- ===== 顶部导航（全站统一）===== -->
+      <header class="site-header">
+    <div class="header-inner">
+      <!-- 左侧三横菜单按钮：点击展开 / 再点关闭（变 X） -->
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="siteMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- 全屏菜单：衬线大字居中 -->
+      <nav class="nav-menu" id="siteMenu" aria-hidden="true">
+        <a href="index.html" data-i18n="nav.home">首页</a>
+        <a href="portfolio.html" data-i18n="nav.portfolio">作品集</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <a href="contact.html" data-i18n="nav.contact">联系</a>
+
+        <!-- 菜单底部 Instagram 图标 -->
+        <div class="nav-menu-foot">
+          <a href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- 右侧站点名：点击回首页 -->
+      <!-- 语言切换：中文态显示 EN / 英文态显示 中 -->
+      <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+      <a class="site-name" href="index.html">
+        <span class="site-name-name">Lisha Lai</span>
+        <span class="site-name-sub" data-i18n="nav.tagline">Urban Observer &middot; 城市漫游手记</span>
+      </a>
+    </div>
+  </header>
+
+    <!-- ===== 首屏：通栏大横幅（封面照片 images/cover.jpg，日后可直接替换该文件）===== -->
+    <section class="hero">
+      <img
+        class="hero-img"
+        src="images/cover.jpg"
+        alt="城市漫步 · 首屏横幅照片"
+        fetchpriority="high"
+      />
+    </section>
+
+    <!-- ===== 一句话简介 + 核心入口 ===== -->
+    <section class="hero-intro">
+      <!-- 简介文字可直接修改 -->
+      <p class="tagline" data-i18n="home.tagline">在城市里慢慢走，<br />记下快要消失的风景和故事。</p>
+      <a class="text-btn" href="portfolio.html"><span data-i18n="home.view">查看作品</span> <span class="arrow">&rarr;</span></a>
+    </section>
+
+    <!-- ===== 页脚（全站统一）：Instagram 图标 + 邮箱 ===== -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <!-- 邮箱：把两处 lishalai2609@outlook.com 换成你的邮箱 -->
+        <a class="footer-email" href="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-zh="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-en="mailto:lishalai2609@outlook.com?subject=Collaboration%20enquiry%20from%20your%20portfolio&body=Hi%20Lisha%2C%0D%0AI%20came%20across%20your%20work%20on%20your%20portfolio%20website%20and%20would%20love%20to%20discuss%20a%20possible%20collaboration.%0D%0A%0D%0AMy%20project%20/%20enquiry%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20reply.">lishalai2609@outlook.com</a>
+        <!-- Instagram：把 href="#" 换成你的主页链接 -->
+        <a
+          class="footer-ig"
+          href="#"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.2" cy="6.8" r="0.6" fill="#222222" stroke="none" />
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Lisha Lai</p>
+    </footer>
+
+    <script src="js/i18n.js?v=202611043"></script>
+    <script src="js/main.js?v=202611043"></script>
+  </body>
+</html>

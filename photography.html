@@ -1,0 +1,158 @@
+<!doctype html>
+<!--
+  ============================================================
+  摄影 / 步旅系列页 photography.html
+  · 4 个城市漫步系列纵向排列，点击进入 series-1.html ~ series-4.html
+  · 新增 / 调整系列：复制一个 <a class="series-item">…</a> 块
+  ============================================================
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="步旅系列：正在继续的城市漫步——行走广州、散步香港、小店记录、城市背影" />
+    <title data-i18n="t.photography">步旅系列 · 城市漫步手记</title>
+    <link rel="preconnect" href="https://fonts.googleapis.cn" />
+    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+    <link
+      href="https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=202611043" />
+  </head>
+  <body>
+    <!-- ===== 顶部导航（全站统一）===== -->
+      <header class="site-header">
+    <div class="header-inner">
+      <!-- 左侧三横菜单按钮：点击展开 / 再点关闭（变 X） -->
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="siteMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- 全屏菜单：衬线大字居中 -->
+      <nav class="nav-menu" id="siteMenu" aria-hidden="true">
+        <a href="index.html" data-i18n="nav.home">首页</a>
+        <a href="portfolio.html" data-i18n="nav.portfolio">作品集</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <a href="contact.html" data-i18n="nav.contact">联系</a>
+
+        <!-- 菜单底部 Instagram 图标 -->
+        <div class="nav-menu-foot">
+          <a href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- 右侧站点名：点击回首页 -->
+      <!-- 语言切换：中文态显示 EN / 英文态显示 中 -->
+      <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+      <a class="site-name" href="index.html">
+        <span class="site-name-name">Lisha Lai</span>
+        <span class="site-name-sub" data-i18n="nav.tagline">Urban Observer &middot; 城市漫游手记</span>
+      </a>
+    </div>
+  </header>
+
+    <main class="page">
+      <!-- 返回作品总览 -->
+      <div class="page-narrow">
+        <a class="back-link" href="portfolio.html">&larr; <span data-i18n="back.portfolio">返回作品</span></a>
+      </div>
+
+      <header class="series-header">
+        <h1 data-i18n="walks.title">步旅系列</h1>
+        <p data-i18n="walks.sub">正在继续的城市漫步</p>
+      </header>
+
+      <!-- 说明：步旅总封面 walk-cover.webp 仅在作品总览 portfolio 入口使用一次，本页不再重复展示 -->
+
+      <div class="series-list">
+        <!-- ===== 系列 1：行走广州 ===== -->
+        <a class="series-item" href="series-1.html">
+          <figure class="series-cover">
+            <img src="images/series-guangzhou-cover.webp" alt="行走广州 · 系列封面" />
+          </figure>
+          <div class="series-meta">
+            <div class="cat-row">
+              <span class="cat-num">01</span>
+              <h2 class="series-name" data-i18n="gz.name">行走广州</h2>
+              <span class="cat-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p class="series-desc" data-i18n="gz.desc">老街巷、骑楼<br>与早茶城市的日常纹理</p>
+          </div>
+        </a>
+
+        <!-- ===== 系列 2：散步香港 ===== -->
+        <a class="series-item" href="series-2.html">
+          <figure class="series-cover">
+            <img src="images/series-hongkong.webp" alt="散步香港 · 系列封面" />
+          </figure>
+          <div class="series-meta">
+            <div class="cat-row">
+              <span class="cat-num">02</span>
+              <h2 class="series-name" data-i18n="hk.name">散步香港</h2>
+              <span class="cat-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p class="series-desc" data-i18n="hk.desc">斜坡、霓虹<br>与海风吹过的街角</p>
+          </div>
+        </a>
+
+        <!-- ===== 系列 3：老行当与小店 ===== -->
+        <a class="series-item" href="series-3.html">
+          <figure class="series-cover">
+            <img src="images/series-shops.webp" alt="老行当与小店 · 系列封面" />
+          </figure>
+          <div class="series-meta">
+            <div class="cat-row">
+              <span class="cat-num">03</span>
+              <h2 class="series-name" data-i18n="sh.name">老行当与小店</h2>
+              <span class="cat-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p class="series-desc" data-i18n="sh.desc">老街里坚守的手艺<br>与新开的小店</p>
+          </div>
+        </a>
+
+        <!-- ===== 系列 4：城市背影 ===== -->
+        <a class="series-item" href="series-4.html">
+          <figure class="series-cover">
+            <img src="images/series-backs.webp" alt="城市背影 · 系列封面" />
+          </figure>
+          <div class="series-meta">
+            <div class="cat-row">
+              <span class="cat-num">04</span>
+              <h2 class="series-name" data-i18n="bk.name">城市背影</h2>
+              <span class="cat-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p class="series-desc" data-i18n="bk.desc">路人、光影<br>与无人注意的瞬间</p>
+          </div>
+        </a>
+
+      </div>
+    </main>
+
+    <!-- ===== 页脚（全站统一）===== -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a class="footer-email" href="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-zh="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-en="mailto:lishalai2609@outlook.com?subject=Collaboration%20enquiry%20from%20your%20portfolio&body=Hi%20Lisha%2C%0D%0AI%20came%20across%20your%20work%20on%20your%20portfolio%20website%20and%20would%20love%20to%20discuss%20a%20possible%20collaboration.%0D%0A%0D%0AMy%20project%20/%20enquiry%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20reply.">lishalai2609@outlook.com</a>
+        <a class="footer-ig" href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y1="3" width="18" height="18" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.2" cy="6.8" r="0.6" fill="#222222" stroke="none" />
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Lisha Lai</p>
+    </footer>
+
+    <script src="js/i18n.js?v=202611043"></script>
+    <script src="js/main.js?v=202611043"></script>
+  </body>
+</html>

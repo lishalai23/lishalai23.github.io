@@ -1,0 +1,173 @@
+<!doctype html>
+<!--
+  ============================================================
+  联系页 contact.html
+  · 邮箱：把 lishalai2609@outlook.com 换成你的邮箱（共两处：显示文字 + mailto 链接）
+  · 公众号 / 小红书 / Instagram：把 href="#" 换成你的主页链接，
+    并把链接文字换成账号名
+  ============================================================
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="联系与合作：内容合作、约稿、品牌合作，也欢迎一起在城市里散步" />
+    <title data-i18n="t.contact">联系 · 城市漫步手记</title>
+    <link rel="preconnect" href="https://fonts.googleapis.cn" />
+    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+    <link
+      href="https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=202611043" />
+  </head>
+  <body>
+    <!-- ===== 顶部导航（全站统一）===== -->
+      <header class="site-header">
+    <div class="header-inner">
+      <!-- 左侧三横菜单按钮：点击展开 / 再点关闭（变 X） -->
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="siteMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- 全屏菜单：衬线大字居中 -->
+      <nav class="nav-menu" id="siteMenu" aria-hidden="true">
+        <a href="index.html" data-i18n="nav.home">首页</a>
+        <a href="portfolio.html" data-i18n="nav.portfolio">作品集</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <a href="contact.html" data-i18n="nav.contact">联系</a>
+
+        <!-- 菜单底部 Instagram 图标 -->
+        <div class="nav-menu-foot">
+          <a href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- 右侧站点名：点击回首页 -->
+      <!-- 语言切换：中文态显示 EN / 英文态显示 中 -->
+      <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+      <a class="site-name" href="index.html">
+        <span class="site-name-name">Lisha Lai</span>
+        <span class="site-name-sub" data-i18n="nav.tagline">Urban Observer &middot; 城市漫游手记</span>
+      </a>
+    </div>
+  </header>
+
+    <main class="page page-narrow">
+      <header class="page-head" style="padding-bottom: 40px">
+        <h1 class="page-title" data-i18n="contact.title">合作与联系</h1>
+      </header>
+
+      <!-- ===== 一句话说明 ===== -->
+      <p class="contact-intro" data-i18n="contact.intro">
+        欢迎内容合作、约稿、品牌合作，<br />也欢迎一起在城市里散步。
+      </p>
+
+      <!-- ===== 合作方式 ===== -->
+      <section class="collab">
+        <h2 class="collab-title" data-i18n="contact.ways">合作方式</h2>
+        <p class="collab-lead" data-i18n="contact.wayslead">欢迎以这些方式一起工作：</p>
+        <ul class="service-list">
+          <li>
+            <span class="service-name" data-i18n="svc1.n">出版物策划与主编</span>
+            <span class="service-desc" data-i18n="svc1.d">城市人文读物、刊物的采编与整体统筹</span>
+          </li>
+          <li>
+            <span class="service-name" data-i18n="svc2.n">城市文化内容项目</span>
+            <span class="service-desc" data-i18n="svc2.d">品牌与机构的城市主题内容创作</span>
+          </li>
+          <li>
+            <span class="service-name" data-i18n="svc3.n">人文摄影与约稿</span>
+            <span class="service-desc" data-i18n="svc3.d">城市纪录、影像授权、专题约稿</span>
+          </li>
+          <li>
+            <span class="service-name" data-i18n="svc4.n">城市漫步与路线产品</span>
+            <span class="service-desc" data-i18n="svc4.d">行走路线策划、城市地图与步旅内容</span>
+          </li>
+        </ul>
+
+        <a class="mail-cta" href="mailto:lishalai2609@outlook.com?subject=%E7%B4%A2%E5%8F%96%E5%AE%8C%E6%95%B4%E4%BD%9C%E5%93%81%E9%9B%86" data-i18n="contact.mailcta">
+          来信获取完整作品集
+        </a>
+        <span class="mail-cta-note" data-i18n="contact.mailnote">完整作品集含书籍内页与项目详情，来信后回复发送。</span>
+      </section>
+
+      <!-- ===== 联系方式列表 ===== -->
+      <section class="collab">
+        <h2 class="collab-title" data-i18n="contact.contact">联系</h2>
+      <ul class="contact-list" style="margin-top: 24px">
+        <!-- 邮箱：替换两处 lishalai2609@outlook.com -->
+        <li>
+          <span class="contact-label" data-i18n="contact.email">邮箱</span>
+          <a class="contact-value" href="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-zh="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-en="mailto:lishalai2609@outlook.com?subject=Collaboration%20enquiry%20from%20your%20portfolio&body=Hi%20Lisha%2C%0D%0AI%20came%20across%20your%20work%20on%20your%20portfolio%20website%20and%20would%20love%20to%20discuss%20a%20possible%20collaboration.%0D%0A%0D%0AMy%20project%20/%20enquiry%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20reply.">lishalai2609@outlook.com</a>
+        </li>
+        <!-- 公众号「鞋带二三」：点击弹出二维码弹窗 -->
+        <li>
+          <span class="contact-label" data-i18n="contact.wechat">公众号</span>
+          <button class="contact-value contact-trigger" type="button" data-modal-open="modal-wechat">鞋带二三</button>
+        </li>
+        <!-- 小红书「鞋带二三」：点击弹出二维码弹窗 -->
+        <li>
+          <span class="contact-label" data-i18n="contact.xhs">小红书</span>
+          <button class="contact-value contact-trigger" type="button" data-modal-open="modal-xhs">鞋带二三</button>
+        </li>
+        <!-- Instagram -->
+        <li>
+          <span class="contact-label">Instagram</span>
+          <a class="contact-value" href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener">@shoelace.23</a>
+        </li>
+      </ul>
+      </section>
+    </main>
+
+    <!-- ============================================================
+         二维码弹窗（公众号 / 小红书）
+         · 白底细边大留白；点空白处或右上角 × 关闭
+         · 二维码图片请放入 images/qrcode-wechat.jpg 与 images/qrcode-xiaohongshu.jpg
+         · 账号名「鞋带二三」保持中文，不翻译
+         ============================================================ -->
+    <div class="qr-modal" id="modal-wechat" aria-hidden="true">
+      <div class="qr-modal-box" role="dialog" aria-modal="true" aria-label="WeChat Official Account">
+        <button class="qr-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>
+        <p class="qr-modal-platform" data-i18n="contact.wechat">公众号</p>
+        <p class="qr-modal-account">鞋带二三</p>
+        <img class="qr-modal-img" src="images/qrcode-wechat.jpg" alt="公众号二维码" />
+      </div>
+    </div>
+
+    <div class="qr-modal" id="modal-xhs" aria-hidden="true">
+      <div class="qr-modal-box" role="dialog" aria-modal="true" aria-label="Xiaohongshu">
+        <button class="qr-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>
+        <p class="qr-modal-platform" data-i18n="contact.xhs">小红书</p>
+        <p class="qr-modal-account">鞋带二三</p>
+        <img class="qr-modal-img" src="images/qrcode-xiaohongshu.jpg" alt="小红书二维码" />
+      </div>
+    </div>
+
+    <!-- ===== 页脚（全站统一）===== -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a class="footer-email" href="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-zh="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-en="mailto:lishalai2609@outlook.com?subject=Collaboration%20enquiry%20from%20your%20portfolio&body=Hi%20Lisha%2C%0D%0AI%20came%20across%20your%20work%20on%20your%20portfolio%20website%20and%20would%20love%20to%20discuss%20a%20possible%20collaboration.%0D%0A%0D%0AMy%20project%20/%20enquiry%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20reply.">lishalai2609@outlook.com</a>
+        <a class="footer-ig" href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.2" cy="6.8" r="0.6" fill="#222222" stroke="none" />
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Lisha Lai</p>
+    </footer>
+
+    <script src="js/i18n.js?v=202611043"></script>
+    <script src="js/main.js?v=202611043"></script>
+  </body>
+</html>

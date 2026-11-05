@@ -1,0 +1,1445 @@
+/* ============================================================
+   个人作品集站 · 全局样式
+   极简摄影集风格：纸白、墨黑、大量留白、无彩色、无圆角
+   想换主色调：修改下方 :root 中的 CSS 变量即可
+   ============================================================ */
+
+:root {
+  --bg: #ffffff;          /* 页面底色：纯白 */
+  --bg-soft: #fafaf8;     /* 次级底色（页脚）：米白 */
+  --text: #222222;        /* 正文墨色 */
+  --muted: #888888;       /* 辅助灰字 */
+  --line: #ececec;        /* 分隔线 */
+  --placeholder: #eeeeee; /* 占位灰 */
+  --serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --sans: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* ---------- 基础重置 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 2;
+  letter-spacing: 1.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ============================================================
+   顶部导航（全站统一，所有设备同一套交互）
+   左侧：三横菜单按钮（点击展开全屏衬线菜单，再点变 X 关闭）
+   右侧：站点名（点击回首页）
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ---- 左侧：三横菜单按钮 ---- */
+.nav-toggle {
+  display: flex;              /* 所有设备都显示汉堡，不再有常驻文字导航 */
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;                   /* 三条线之间间距，整体点击区域更宽松 */
+  width: 44px;                /* 加大点击热区，手机端也容易点中 */
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--text);
+  transform-origin: center;
+  transition: transform 0.35s ease, opacity 0.3s ease;
+}
+
+/* 菜单展开时：三横变为 X（上下两条旋转，中间淡出） */
+.nav-toggle.is-open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.nav-toggle.is-open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ---- 全屏菜单覆盖层 ----
+   z-index 低于顶栏：展开后顶部的 X 与站名仍可见可点（参考 Squarespace 版式） */
+.nav-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.985);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.nav-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 菜单项：衬线大字、居中、宽松字距，展开时自下而上轻微浮入 */
+.nav-menu > a {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 8px;
+  color: var(--text);
+  padding: 13px 10px;
+  transform: translateY(16px);
+  transition: transform 0.55s ease, opacity 0.3s ease;
+}
+
+.nav-menu.is-open > a {
+  transform: translateY(0);
+}
+
+/* 逐项错峰浮入（仅展开时延迟，关闭时立即收回） */
+.nav-menu.is-open > a:nth-child(1) { transition-delay: 0.07s; }
+.nav-menu.is-open > a:nth-child(2) { transition-delay: 0.14s; }
+.nav-menu.is-open > a:nth-child(3) { transition-delay: 0.21s; }
+.nav-menu.is-open > a:nth-child(4) { transition-delay: 0.28s; }
+.nav-menu.is-open > a:nth-child(5) { transition-delay: 0.35s; }
+
+.nav-menu > a:hover {
+  opacity: 0.5;
+}
+
+/* 当前所在页：菜单项下方居中出现短细线 */
+.nav-menu > a.is-active {
+  position: relative;
+}
+
+.nav-menu > a.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  width: 26px;
+  height: 1px;
+  background: var(--text);
+  transform: translateX(-50%);
+}
+
+/* 菜单底部：Instagram 图标（贴近屏幕下沿居中） */
+.nav-menu-foot {
+  position: absolute;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-menu-foot a {
+  display: flex;
+  color: var(--text);
+  transition: opacity 0.3s ease;
+}
+
+.nav-menu-foot a:hover {
+  opacity: 0.5;
+}
+
+/* ---- 右上角站名块（两行：姓名 + 身份标签）---- */
+.site-name {
+  text-align: right;
+  line-height: 1.5;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.site-name-name {
+  display: block;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.site-name-sub {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--muted);
+}
+
+.site-name:hover {
+  opacity: 0.55;
+}
+
+/* ============================================================
+   首页
+   ============================================================ */
+.hero-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* 桌面端横幅（如换成更宽的照片，可改为 21 / 9） */
+  object-fit: cover;
+}
+
+.hero-intro {
+  text-align: center;
+  padding: 96px 24px 120px;
+}
+
+/* 一句话简介 */
+.tagline {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 2;
+  letter-spacing: 4px;
+  max-width: 640px;
+  margin: 0 auto 44px;
+}
+
+/* 极简文字按钮：无底色、无边框，只有下划线与箭头 */
+.text-btn {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 4px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--text);
+  transition: opacity 0.3s ease;
+}
+
+.text-btn .arrow {
+  display: inline-block;
+  transition: transform 0.35s ease;
+}
+
+.text-btn:hover {
+  opacity: 0.6;
+}
+
+.text-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* ============================================================
+   内页通用结构
+   ============================================================ */
+.page {
+  padding-bottom: 40px;
+}
+
+.page-head {
+  text-align: center;
+  padding: 88px 24px 72px;
+}
+
+.page-title {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 8px;
+}
+
+.page-sub {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 3px;
+}
+
+/* 作品总览页：标题左对齐，与内容左缘对齐，形成清晰栏目层级 */
+.page-head-left {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 88px 40px 56px;
+  text-align: left;
+}
+
+/* 文字页（关于 / 联系）收窄居中 */
+.page-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ============================================================
+   作品集页：5 个系列纵向排列
+   ============================================================ */
+.series-list {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+  padding-bottom: 120px;
+}
+
+.series-item {
+  display: block;
+}
+
+.series-cover {
+  overflow: hidden;
+}
+
+.series-cover img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.series-item:hover .series-cover img {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.series-meta {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.series-name {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 6px;
+}
+
+.series-desc {
+  margin-top: 12px;
+  font-size: 12px;              /* 缩小字号，配合手动断行，避免单行孤字 */
+  color: var(--muted);
+  letter-spacing: 2.5px;
+  line-height: 1.9;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   系列详情页：返回链接 + 纵向组图
+   ============================================================ */
+.back-link {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  color: var(--muted);
+  margin: 40px 0 8px;
+  transition: opacity 0.3s ease;
+}
+
+.back-link:hover {
+  opacity: 0.55;
+}
+
+.series-header {
+  text-align: center;
+  padding: 56px 24px 96px;
+}
+
+.series-header h1 {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 8px;
+}
+
+.series-header p {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 2.5px;
+}
+
+/* 组图纵向铺陈，图间大留白 */
+.photo-list {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.photo-item {
+  margin-bottom: 96px;
+}
+
+.photo-item img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* 图下注释：a. b. c. + 简短小标题 */
+.photo-item figcaption {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.photo-item figcaption .idx {
+  font-family: var(--serif);
+  color: var(--text);
+  margin-right: 8px;
+}
+
+/* ============================================================
+   关于页
+   ============================================================ */
+.prose p {
+  margin-bottom: 28px;
+  font-size: 15px;
+  line-height: 2.1;
+}
+
+/* 诗行式自我介绍：居中、行距收小、段间留白 */
+.prose-lines {
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 32px;
+}
+
+.prose-lines p {
+  margin-bottom: 30px;
+  font-size: 13px;
+  line-height: 2.4;
+  letter-spacing: 3px;
+}
+
+.prose-lines p:last-child {
+  margin-bottom: 0;
+}
+
+.about-photo {
+  margin: 72px 0 88px;
+}
+
+.about-photo img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.ending {
+  font-family: var(--serif);
+  font-size: 20px;
+  letter-spacing: 6px;
+  text-align: center;
+  padding-bottom: 120px;
+}
+
+/* ============================================================
+   联系页
+   ============================================================ */
+.contact-intro {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 2.2;
+  letter-spacing: 3px;
+  padding: 0 0 72px;
+}
+
+.contact-list {
+  border-top: 1px solid var(--line);
+}
+
+.contact-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-label {
+  flex: 0 0 88px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
+.contact-value {
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  transition: opacity 0.3s ease;
+}
+
+a.contact-value:hover {
+  opacity: 0.55;
+}
+
+/* ============================================================
+   收藏夹页：方形缩略图网格
+   ============================================================ */
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 桌面 4 列 */
+  gap: 6px;
+  padding: 0 6px 120px;
+}
+
+.fav-item {
+  display: block;
+  overflow: hidden;
+}
+
+.fav-item img {
+  aspect-ratio: 1 / 1;            /* 方形缩略图 */
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.fav-item:hover img {
+  transform: scale(1.03);
+  opacity: 0.92;
+}
+
+/* ============================================================
+   页脚（全站统一）：Instagram 图标 + 邮箱
+   ============================================================ */
+.site-footer {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 56px 24px 48px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+
+.footer-email {
+  font-size: 14px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-email:hover {
+  opacity: 0.55;
+  border-bottom-color: var(--text);
+}
+
+.footer-ig {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  transition: opacity 0.3s ease;
+}
+
+.footer-ig:hover {
+  opacity: 0.5;
+}
+
+.footer-ig svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--text);
+  fill: none;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+/* ============================================================
+   响应式：平板
+   ============================================================ */
+@media (max-width: 1023px) {
+  .fav-grid {
+    grid-template-columns: repeat(3, 1fr); /* 平板 3 列 */
+  }
+}
+
+/* ============================================================
+   响应式：手机
+   ============================================================ */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+
+  .header-inner {
+    padding: 16px 20px;
+  }
+
+  /* 全屏菜单在手机上字号略收 */
+  .nav-menu > a {
+    font-size: 24px;
+    letter-spacing: 6px;
+    padding: 11px 8px;
+  }
+
+  .nav-menu-foot {
+    bottom: 40px;
+  }
+
+  .site-name-name {
+    font-size: 15px;
+    letter-spacing: 3px;
+  }
+
+  .site-name-sub {
+    font-size: 9px;
+  }
+
+  /* 通栏大图移动端统一 4:3 */
+  .hero-img,
+  .series-cover img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero-intro {
+    padding: 64px 24px 88px;
+  }
+
+  .tagline {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+
+  .page-head {
+    padding: 64px 24px 56px;
+  }
+
+  .page-head-left {
+    padding: 64px 24px 48px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    letter-spacing: 6px;
+  }
+
+  .series-list {
+    gap: 72px;
+    padding-bottom: 88px;
+  }
+
+  .series-name {
+    font-size: 21px;
+    letter-spacing: 4px;
+  }
+
+  .series-header {
+    padding: 40px 24px 64px;
+  }
+
+  .series-header h1 {
+    font-size: 24px;
+    letter-spacing: 6px;
+  }
+
+  .photo-item {
+    margin-bottom: 64px;
+  }
+
+  .about-photo {
+    margin: 56px 0 64px;
+  }
+
+  .ending {
+    font-size: 18px;
+    padding-bottom: 88px;
+  }
+
+  .contact-list li {
+    gap: 20px;
+    flex-direction: column;
+    padding: 18px 4px;
+  }
+
+  .contact-label {
+    flex: none;
+  }
+
+  .fav-grid {
+    grid-template-columns: repeat(2, 1fr); /* 手机 2 列 */
+    gap: 4px;
+    padding: 0 4px 88px;
+  }
+}
+
+/* ============================================================
+   出版物页：立体成品图网格
+   图片为带投影的竖版成品图（2:3），白底与页面自然融合；
+   不再用 CSS 3D 构造。改列数 / 大小：调 .pub-grid 即可
+   ============================================================ */
+
+/* 单个板块 */
+.pub-section {
+  max-width: 720px;             /* 板块收窄：封面变小，两侧留出大段呼吸空间 */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.pub-section + .pub-section {
+  margin-top: 128px;            /* 两个板块之间大留白 */
+}
+
+/* 板块标题：衬线，居中 */
+.pub-section-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: 5px;
+  margin-bottom: 16px;
+}
+
+/* 「即将上线」灰色提示（封面补全后可删除此行） */
+.pub-pending {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-bottom: 56px;
+}
+
+/* 成品图网格：桌面 3 列，行间距大、列间距宽松，体现呼吸 */
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 104px 64px;
+  padding-bottom: 128px;
+}
+
+.pub-item {
+  margin: 0;
+  text-align: center;
+}
+
+/* 封面链接：块级并继承原来的缩放/透明度悬停反馈 */
+.pub-item > a {
+  display: block;
+  text-decoration: none;
+}
+
+/* 成品图：居中并略小于格子（约 78%），四周仍留呼吸白，同时书名清晰可辨 */
+.pub-img {
+  display: block;
+  width: 78%;
+  max-width: 380px;          /* 桌面端上限 */
+  margin: 0 auto;
+  height: auto;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.pub-item:hover .pub-img {
+  transform: scale(1.02);      /* 极轻微放大，克制 */
+  opacity: 0.92;
+}
+
+/* 书名标注：衬线居中，宽字距 */
+.pub-caption {
+  margin-top: 20px;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: 3px;
+}
+
+/* 占位用书名（灰色小字） */
+.pub-caption-muted {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12px;
+}
+
+/* ---------- 平板：3 列但间距收紧 ---------- */
+@media (max-width: 1023px) {
+  .pub-grid {
+    gap: 72px 32px;
+  }
+}
+
+/* ---------- 手机：2 列，图片相应变小 ---------- */
+@media (max-width: 767px) {
+  .pub-section {
+    padding: 0 24px;          /* 手机端也保留两侧留白 */
+  }
+
+  .pub-section + .pub-section {
+    margin-top: 96px;
+  }
+
+  .pub-section-title {
+    font-size: 19px;
+    letter-spacing: 4px;
+  }
+
+  .pub-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 72px 32px;
+    padding-bottom: 104px;
+  }
+
+  /* 手机端封面略放宽至 82%，看清书名的同时仍小于格子、保留留白 */
+  .pub-img {
+    width: 82%;
+    max-width: 240px;
+  }
+
+  .pub-caption {
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 16px;
+  }
+}
+
+/* ============================================================
+   出版物详情页 book-*.html
+   · 顶部封面小图 + 书名标题 + 内页拼图（≤5 张）+ 文字介绍
+   ============================================================ */
+.book-detail {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+/* 顶部：封面 + 书名题头 */
+.book-detail-head {
+  text-align: center;
+  padding: 40px 0 56px;
+}
+.book-detail-cover {
+  width: 300px;
+  max-width: 60%;
+  margin: 0 auto 36px;
+}
+.book-detail-cover img {
+  width: 100%;
+  display: block;
+}
+.book-detail-head h1 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 6px;
+}
+.book-detail-head .book-kicker {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 3px;
+}
+
+/* 内页拼图：方形小图 2~3 列并排 */
+.book-spread {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 28px 0 48px;
+}
+.book-spread-1 { grid-template-columns: 1fr; }
+.book-spread-3 { grid-template-columns: repeat(3, 1fr); }
+.book-spread figure {
+  margin: 0;
+}
+.book-spread img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.book-spread figcaption {
+  margin-top: 12px;
+  font-family: var(--serif);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+/* 文字介绍 */
+.book-intro {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 2.1;
+  letter-spacing: 1px;
+}
+.book-intro h2 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.book-intro p {
+  margin-bottom: 18px;
+}
+
+/* 出版信息（作者 / 出版社 / 年） */
+/* 出版信息：内页之后、署名之前的一行浅灰小字（无卡片无边框，极简） */
+.book-pubinfo {
+  margin-top: 32px;
+  font-size: 12.5px;
+  color: rgba(0,0,0,0.45);
+  letter-spacing: 1px;
+  line-height: 2;
+  word-break: keep-all;
+}
+.book-pubinfo .isbn-keep { white-space: nowrap; }
+@media (max-width: 767px) {
+  .book-pubinfo { margin-top: 28px; font-size: 11.5px; }
+}
+html[lang="en"] .book-pubinfo { letter-spacing: 0.2px; }
+
+.book-meta {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  line-height: 2;
+}
+.book-meta span {
+  display: block;
+}
+
+/* 手机端：内页拼图改为单列（或两本紧凑） */
+@media (max-width: 767px) {
+  .book-detail-head h1 {
+    font-size: 21px;
+    letter-spacing: 4px;
+  }
+  .book-detail-cover {
+    width: 240px;
+    max-width: 64%;
+    margin-bottom: 28px;
+  }
+  .book-spread {
+    gap: 14px;
+  }
+  .book-spread-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .book-intro {
+    font-size: 13px;
+  }
+}
+
+/* 内页大图：纵向排列，完整展示（高度自适应，不裁切） */
+.book-pages {
+  max-width: 960px;
+  margin: 56px auto 0;
+}
+.book-pages figure {
+  margin: 0 0 64px;
+}
+.book-pages figure:last-child {
+  margin-bottom: 0;
+}
+.book-pages img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* 纸页阴影：模拟摊开在白桌上的实体书页，淡而柔（全站唯一允许的阴影例外之二） */
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.05),
+    0 10px 28px rgba(0, 0, 0, 0.07);
+}
+.book-pages figcaption {
+  margin-top: 14px;
+  font-family: var(--serif);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .book-pages { margin-top: 40px; }
+  .book-pages figure { margin-bottom: 44px; }
+}
+
+/* ============================================================
+   联系页（合作与联系）· 合作方式板块
+   ============================================================ */
+.collab {
+  border-top: 1px solid var(--line);
+  padding: 56px 0 8px;
+  margin-top: 48px;
+}
+.collab-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  margin-bottom: 8px;
+}
+.collab-lead {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  line-height: 2;
+  margin-bottom: 40px;
+}
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 44px;
+}
+.service-list li {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.service-name {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  min-width: 190px;
+  flex-shrink: 0;
+}
+.service-desc {
+  font-size: 13px;
+  color: var(--text);
+  letter-spacing: 1.5px;
+  line-height: 1.9;
+}
+.mail-cta {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 16px 34px;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #fff;
+  background: var(--text);
+  border: 1px solid var(--text);
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+.mail-cta:hover { opacity: 0.85; background: #000; }
+.mail-cta-note {
+  display: block;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+@media (max-width: 767px) {
+  .service-list li { flex-direction: column; gap: 8px; }
+  .service-name { min-width: 0; }
+}
+
+/* ============================================================
+   步旅系列总封面（页头下通栏大图）
+   ============================================================ */
+.walk-total-cover {
+  margin: 0 auto 72px;
+  max-width: 1080px;
+  padding: 0 24px;
+}
+.walk-total-cover img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+.walk-total-cover img:hover { opacity: 0.92; transform: scale(1.008); }
+@media (max-width: 767px) {
+  .walk-total-cover { margin-bottom: 48px; padding: 0 18px; }
+}
+
+/* ============================================================
+   zine与创作详情页 · 栏目分区
+   ============================================================ */
+.zine-section { margin-bottom: 88px; }
+.zine-section-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin: 0 0 28px;
+  color: var(--text);
+}
+.zine-section-name .idx {
+  color: var(--muted);
+  font-weight: 400;
+  margin-right: 10px;
+}
+@media (max-width: 767px) {
+  .zine-section { margin-bottom: 56px; }
+}
+
+/* ============================================================
+   城市人文出版物系列 · 实体书轮排
+   （一本实体书拼图 + 书名，纵向一本一本轮流展示）
+   ============================================================ */
+.urban-scroll { padding-top: 12px; }
+.urban-book { margin-bottom: 96px; }
+.urban-book:last-child { margin-bottom: 0; }
+.urban-book-fig {
+  margin: 0;
+  text-align: center;
+}
+.urban-book-media img {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+.urban-book-media img:hover { opacity: 0.95; transform: scale(1.008); }
+/* 封面可点击时（链接到详情页）：保持继承色、无下划线 */
+.urban-book-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.urban-book-title {
+  text-align: center;
+  margin-top: 36px;
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: 6px;
+  color: var(--text);
+}
+.urban-book-note {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+@media (max-width: 767px) {
+  .urban-book { margin-bottom: 64px; }
+  .urban-book-title { font-size: 16px; letter-spacing: 4px; }
+}
+
+/* ============================================================
+   语言切换按钮（右上角，纯文字极简：中文态 EN / 英文态 中）
+   margin-left:auto 将其与右侧站名一起推到最右，二者紧挨
+   ============================================================ */
+.lang-toggle {
+  margin-left: auto;
+  align-self: center;
+  display: inline-flex;       /* 内容水平垂直居中 */
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;            /* 移动端推荐触控目标 44x44，手机不再点偏 */
+  min-height: 44px;
+  padding: 4px 8px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.3s ease;
+}
+.lang-toggle:hover {
+  opacity: 0.5;
+}
+
+/* ============================================================
+   二维码弹窗（公众号 / 小红书）
+   · 遮罩浅灰半透明；弹窗白底、1px 细边、无圆角无阴影、大留白
+   · 手机端二维码约占屏宽 60%~70%，保证长按可识别
+   ============================================================ */
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.qr-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.qr-modal-box {
+  position: relative;
+  width: 360px;
+  max-width: 100%;
+  padding: 44px 40px 40px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+/* 右上角关闭符号 */
+.qr-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  padding: 4px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--muted);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.3s ease;
+}
+.qr-modal-close:hover {
+  opacity: 0.5;
+}
+
+.qr-modal-platform {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: var(--text);
+}
+.qr-modal-account {
+  margin-top: 8px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+.qr-modal-img {
+  display: block;
+  width: 240px;
+  height: auto;
+  margin: 28px auto 0;
+}
+
+/* 触发弹窗的文字按钮：与普通联系链接外观一致 */
+button.contact-trigger {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  text-align: left;
+  padding: 0;
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+button.contact-trigger:hover {
+  opacity: 0.55;
+}
+
+/* ---- 手机端：弹窗二维码约占屏宽 60%~70% ---- */
+@media (max-width: 767px) {
+  .qr-modal {
+    padding: 16px;
+  }
+  .qr-modal-box {
+    width: 100%;
+    padding: 40px 28px 32px;
+  }
+  .qr-modal-img {
+    width: 64vw;
+  }
+  .lang-toggle {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
+   英文模式：收紧字距、换拉丁字体、恢复留白
+   · 仅在 html[lang="en"] 时生效，完全不影响中文版式
+   · 中文字距按单字调校较宽，英文为字母组合，需收紧避免单词撑散
+   ============================================================ */
+html[lang="en"]{
+  --serif: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+}
+/* 英文下拉长 tagline 不换行会把三横线挤出：加固汉堡按钮，避免被压缩/挤出可视区 */
+html[lang="en"] .nav-toggle{
+  flex: 0 0 auto;
+  flex-shrink: 0;
+  z-index: 30;
+}
+html[lang="en"] .site-name{ white-space: normal; letter-spacing:.3px; line-height:1.7; }
+/* 英文字体整体更细一档 */
+html[lang="en"] body{ font-weight:400; }
+html[lang="en"] .nav-menu > a,
+html[lang="en"] .page-title,
+html[lang="en"] .series-header h1,
+html[lang="en"] .series-name,
+html[lang="en"] .site-name-name,
+html[lang="en"] .text-btn,
+html[lang="en"] .collab-title,
+html[lang="en"] .service-name{ font-weight:500; }
+html[lang="en"] .nav-menu > a,
+html[lang="en"] .page-title,
+html[lang="en"] .series-header h1{ letter-spacing:2px; }
+html[lang="en"] .series-name{ letter-spacing:1.5px; }
+html[lang="en"] .tagline{ font-size:20px; letter-spacing:.4px; line-height:1.9; }
+html[lang="en"] .page-sub,
+html[lang="en"] .series-header p,
+html[lang="en"] .series-desc{ letter-spacing:.4px; line-height:1.9; }
+html[lang="en"] .text-btn{ letter-spacing:1.5px; }
+html[lang="en"] .ending{ letter-spacing:1.5px; }
+html[lang="en"] .contact-intro{ letter-spacing:.3px; line-height:2; }
+html[lang="en"] .collab-title{ letter-spacing:2px; }
+html[lang="en"] .collab-lead,
+html[lang="en"] .service-name,
+html[lang="en"] .service-desc{ letter-spacing:.3px; line-height:1.8; }
+html[lang="en"] .pub-caption,
+html[lang="en"] .urban-book-title{ letter-spacing:1px; }
+/* 出版物详情页：英文收紧 */
+html[lang="en"] .book-detail-head h1{ letter-spacing:2px; }
+html[lang="en"] .book-kicker{ letter-spacing:1.5px; }
+html[lang="en"] .book-intro{ letter-spacing:.3px; line-height:2; }
+html[lang="en"] .book-pages figcaption{ letter-spacing:.4px; }
+html[lang="en"] .book-meta{ letter-spacing:.8px; }
+html[lang="en"] .mail-cta-note{ letter-spacing:.2px; line-height:1.8; }
+/* 防止长单词/长链接溢出 */
+html[lang="en"] p, html[lang="en"] .service-desc{ overflow-wrap:break-word; }
+
+/* ---- 英文模式移动端：标语与标题进一步收紧 ---- */
+@media (max-width: 767px) {
+  html[lang="en"] .tagline{ font-size:17px; }
+  html[lang="en"] .nav-menu > a{ letter-spacing:1.5px; }
+  html[lang="en"] .page-title{ letter-spacing:1.5px; }
+}
+
+/* ============================================================
+   可点击元素悬停交互（仅交互，不改配色；全部使用站内中性色）
+   ============================================================ */
+
+/* ---------- 一、全屏导航菜单：底部左侧滑出下划线 ---------- */
+.nav-menu > a {
+  position: relative;
+  padding-bottom: 3px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1.5px;
+  transition: opacity 0.3s ease, background-size 0.32s cubic-bezier(.4, 0, .2, 1);
+}
+.nav-menu > a:hover {
+  opacity: 1;
+  background-size: 100% 1.5px;
+}
+
+/* ---------- 二、作品分类 / 步旅系列：序号 + 竖线 + 右移 + 箭头 ---------- */
+/* 保留原封面大图与居中版式；序号 / 箭头与系列名同行 */
+.cat-row {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  padding: 6px 14px;
+  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+.series-item:hover .cat-row {
+  transform: translateX(4px);
+}
+.cat-num {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: #bbbbbb;
+  transition: color 0.3s;
+}
+.series-item:hover .cat-num {
+  color: var(--text);
+}
+.cat-arrow {
+  font-size: 15px;
+  color: #c9c9c9;
+  transition: transform 0.3s, color 0.3s;
+}
+.series-item:hover .cat-arrow {
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+/* ---------- 三、页脚 / 返回链接：常驻细下划线，悬停变深 ---------- */
+.footer-links a,
+.back-link,
+.nav-menu-foot a {
+  text-decoration: none;
+  padding-bottom: 2px;
+  background-image: linear-gradient(#c9c9c9, #c9c9c9);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: background-image 0.3s, color 0.3s, opacity 0.3s;
+}
+.footer-links a:hover,
+.back-link:hover,
+.nav-menu-foot a:hover {
+  background-image: linear-gradient(var(--text), var(--text));
+  color: var(--text);
+  opacity: 1;
+}
+/* Instagram 图标为 svg，常驻下划线不适用，保留其原悬停透明度 */
+.footer-ig {
+  padding-bottom: 0;
+  background-image: none;
+}
+.nav-menu-foot a {
+  padding-bottom: 0;
+  background-image: none;
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<!--
+  ============================================================
+  收藏夹页 favorites.html
+  · 灵感碎片网格：明信片、街头涂鸦、手写招牌、老照片……
+  · 桌面 4 列 / 平板 3 列 / 手机 2 列，方形缩略图，无文字说明
+  · 替换图片：把 images/fav-01.svg ~ 16.svg 换成照片即可
+  · 增删格子：复制或删除一个 <figure class="fav-item"> 块
+  ============================================================
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="收藏夹：灵感碎片——明信片、街头涂鸦、手写招牌与老照片" />
+    <title data-i18n="t.fav">收藏夹 · 城市漫步手记</title>
+    <link rel="preconnect" href="https://fonts.googleapis.cn" />
+    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+    <link
+      href="https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=202611043" />
+  </head>
+  <body>
+    <!-- ===== 顶部导航（全站统一）===== -->
+      <header class="site-header">
+    <div class="header-inner">
+      <!-- 左侧三横菜单按钮：点击展开 / 再点关闭（变 X） -->
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="siteMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- 全屏菜单：衬线大字居中 -->
+      <nav class="nav-menu" id="siteMenu" aria-hidden="true">
+        <a href="index.html" data-i18n="nav.home">首页</a>
+        <a href="portfolio.html" data-i18n="nav.portfolio">作品集</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <a href="contact.html" data-i18n="nav.contact">联系</a>
+
+        <!-- 菜单底部 Instagram 图标 -->
+        <div class="nav-menu-foot">
+          <a href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- 右侧站点名：点击回首页 -->
+      <!-- 语言切换：中文态显示 EN / 英文态显示 中 -->
+      <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+      <a class="site-name" href="index.html">
+        <span class="site-name-name">Lisha Lai</span>
+        <span class="site-name-sub" data-i18n="nav.tagline">Urban Observer &middot; 城市漫游手记</span>
+      </a>
+    </div>
+  </header>
+
+    <main class="page">
+      <header class="page-head">
+        <h1 class="page-title" data-i18n="fav.title">收藏夹</h1>
+        <p class="page-sub" data-i18n="fav.sub">灵感碎片：明信片、涂鸦、手写招牌与老照片</p>
+      </header>
+
+      <!-- ===== 灵感碎片网格（无文字说明，悬停极轻微放大）===== -->
+      <div class="fav-grid">
+        <figure class="fav-item"><img src="images/fav-01.svg" alt="灵感碎片 01" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-02.svg" alt="灵感碎片 02" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-03.svg" alt="灵感碎片 03" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-04.svg" alt="灵感碎片 04" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-05.svg" alt="灵感碎片 05" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-06.svg" alt="灵感碎片 06" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-07.svg" alt="灵感碎片 07" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-08.svg" alt="灵感碎片 08" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-09.svg" alt="灵感碎片 09" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-10.svg" alt="灵感碎片 10" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-11.svg" alt="灵感碎片 11" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-12.svg" alt="灵感碎片 12" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-13.svg" alt="灵感碎片 13" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-14.svg" alt="灵感碎片 14" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-15.svg" alt="灵感碎片 15" loading="lazy" /></figure>
+        <figure class="fav-item"><img src="images/fav-16.svg" alt="灵感碎片 16" loading="lazy" /></figure>
+      </div>
+    </main>
+
+    <!-- ===== 页脚（全站统一）===== -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a class="footer-email" href="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-zh="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-en="mailto:lishalai2609@outlook.com?subject=Collaboration%20enquiry%20from%20your%20portfolio&body=Hi%20Lisha%2C%0D%0AI%20came%20across%20your%20work%20on%20your%20portfolio%20website%20and%20would%20love%20to%20discuss%20a%20possible%20collaboration.%0D%0A%0D%0AMy%20project%20/%20enquiry%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20reply.">lishalai2609@outlook.com</a>
+        <a class="footer-ig" href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.2" cy="6.8" r="0.6" fill="#222222" stroke="none" />
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Lisha Lai</p>
+    </footer>
+
+    <script src="js/i18n.js?v=202611043"></script>
+    <script src="js/main.js?v=202611043"></script>
+  </body>
+</html>

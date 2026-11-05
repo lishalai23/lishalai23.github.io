@@ -1,0 +1,163 @@
+<!doctype html>
+<!--
+  ============================================================
+  出版物详情页 urban-05.html —— 大河之北看辛集（城市人文出版物系列）
+  · 结构：返回链接 + 封面书名题头 + 介绍段落 + 内页大图纵向排列（不裁切）
+  · 换内页图：替换 images/books-inner/xinji-01~12.webp（同名覆盖即可）
+  · 改介绍文字：js/i18n.js 里 xj.intro 键；图注 xj.p1~p12
+  · 其余 11 本书的详情页照此页复制改造
+  ============================================================
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="《大河之北看辛集》：紧扣辛集的皮革发展史，从古迹、美食、非遗、手艺、老街等维度，挖掘这座城市的历史遗存与人文底蕴" />
+    <title data-i18n="t.u5book">大河之北，看辛集 · 城市漫步手记</title>
+    <link rel="preconnect" href="https://fonts.googleapis.cn" />
+    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+    <link
+      href="https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=202611043" />
+  </head>
+  <body>
+    <!-- ===== 顶部导航（全站统一）===== -->
+      <header class="site-header">
+    <div class="header-inner">
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="siteMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="siteMenu" aria-hidden="true">
+        <a href="index.html" data-i18n="nav.home">首页</a>
+        <a href="portfolio.html" data-i18n="nav.portfolio">作品集</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <a href="contact.html" data-i18n="nav.contact">联系</a>
+
+        <div class="nav-menu-foot">
+          <a href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- 语言切换：中文态显示 EN / 英文态显示 中 -->
+      <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+      <a class="site-name" href="index.html">
+        <span class="site-name-name">Lisha Lai</span>
+        <span class="site-name-sub" data-i18n="nav.tagline">Urban Observer &middot; 城市漫游手记</span>
+      </a>
+    </div>
+  </header>
+
+    <main class="page">
+      <div class="page-narrow">
+        <a class="back-link" href="publications.html">&larr; <span data-i18n="back.pub">返回出版物</span></a>
+      </div>
+
+      <div class="book-detail">
+        <!-- ===== 题头：封面小图 + 书名 + 所属系列 ===== -->
+        <header class="book-detail-head">
+          <figure class="book-detail-cover">
+            <img src="images/books-urban/urban-05.webp" alt="《大河之北看辛集》封面" />
+          </figure>
+          <h1 data-i18n="u5">大河之北看辛集</h1>
+          <p class="book-kicker" data-i18n="pub.urban">城市人文出版物系列</p>
+        </header>
+
+        <!-- ===== 文字介绍 ===== -->
+        <div class="book-intro">
+          <p data-i18n="xj.intro">河北辛集市位于京广驿道上，孕育出深厚的冀商传统。本书紧扣辛集的皮革发展史，从古迹、美食、非遗、手艺、老街等维度，挖掘这座城市的历史遗存与人文底蕴。</p>
+        </div>
+
+        <!-- ===== 内页跨页图：纵向排列，完整展示（高度自适应，不裁切）=====
+             注意：img src 带 ?v= 版本参数防浏览器缓存；若替换了同名图片文件（内容变、文件名不变），
+             请把 12 张图的 v 值一起递增（如 v=20261023 → v=202611043），否则访客会看到旧图 -->
+        <div class="book-pages">
+          <figure>
+            <img src="images/books-inner/xinji-01.webp?v=202611043" alt="大河之北看辛集 内页 · 历史沿革时间轴" loading="lazy" />
+            <figcaption data-i18n="xj.p1">历史沿革 · 辛集时间轴</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-02.webp?v=202611043" alt="大河之北看辛集 内页 · 辛集印象" loading="lazy" />
+            <figcaption data-i18n="xj.p2">辛集印象 · 城市词云与电视塔夜景</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-03.webp?v=202611043" alt="大河之北看辛集 内页 · 篇首语与第一章扉页" loading="lazy" />
+            <figcaption data-i18n="xj.p3">篇首语 · 第一章「岁·历史余温」</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-04.webp?v=202611043" alt="大河之北看辛集 内页 · 三十米长卷古镇风情图" loading="lazy" />
+            <figcaption data-i18n="xj.p4">三十米长卷「古镇风情图」</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-05.webp?v=202611043" alt="大河之北看辛集 内页 · 走进商场街" loading="lazy" />
+            <figcaption data-i18n="xj.p5">走进商场街 · 百货公司与五金商店</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-06.webp?v=202611043" alt="大河之北看辛集 内页 · 商场街路牌与老店铺" loading="lazy" />
+            <figcaption data-i18n="xj.p6">商场街 · 路牌与老店铺内景</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-07.webp?v=202611043" alt="大河之北看辛集 内页 · 河北一集" loading="lazy" />
+            <figcaption data-i18n="xj.p7">河北一集 · 淘货岁月与钟楼</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-08.webp?v=202611043" alt="大河之北看辛集 内页 · 辛集皮贴画" loading="lazy" />
+            <figcaption data-i18n="xj.p8">辛集皮贴画 · 艺在“边角料”</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-09.webp?v=202611043" alt="大河之北看辛集 内页 · 书画装裱修复" loading="lazy" />
+            <figcaption data-i18n="xj.p9">书画装裱修复 · 重塑时光碎片</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-10.webp?v=202611043" alt="大河之北看辛集 内页 · 捉刀画玉" loading="lazy" />
+            <figcaption data-i18n="xj.p10">捉刀画玉 · 雕琢岁月</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-11.webp?v=202611043" alt="大河之北看辛集 内页 · 美食江湖占民饭店" loading="lazy" />
+            <figcaption data-i18n="xj.p11">美食江湖 · 占民饭店的勤脚料</figcaption>
+          </figure>
+          <figure>
+            <img src="images/books-inner/xinji-12.webp?v=202611043" alt="大河之北看辛集 内页 · 一口酥糖" loading="lazy" />
+            <figcaption data-i18n="xj.p12">一口酥糖 · 百年手艺</figcaption>
+          </figure>
+        </div>
+
+        <!-- 出版信息一行小字（i18n 键 xj.pub，ISBN 不拆行） -->
+        <p class="book-pubinfo" data-i18n="xj.pub">2025 年 5 月第 1 版 · 花山文艺出版社 · <span class="isbn-keep">ISBN 978-7-5511-7784-9</span></p>
+
+        <!-- ===== 出版信息 ===== -->
+        <div class="book-meta">
+          <span data-i18n="xj.meta">项目主管 / 编者之一：Lisha Lai</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== 页脚（全站统一）===== -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a class="footer-email" href="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-zh="mailto:lishalai2609@outlook.com?subject=%E6%9D%A5%E8%87%AA%E4%BD%9C%E5%93%81%E9%9B%86%E7%9A%84%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2&body=%E4%BD%A0%E5%A5%BD%20Lisha%EF%BC%8C%0D%0A%E6%88%91%E5%9C%A8%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86%E7%BD%91%E7%AB%99%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%8C%E5%BE%88%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82%E6%83%B3%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%90%88%E4%BD%9C%E7%9A%84%E5%8F%AF%E8%83%BD%E3%80%82%0D%0A%0D%0A%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%9C%9F%E5%BE%85%E5%9B%9E%E5%A4%8D%E3%80%82" data-mailto-en="mailto:lishalai2609@outlook.com?subject=Collaboration%20enquiry%20from%20your%20portfolio&body=Hi%20Lisha%2C%0D%0AI%20came%20across%20your%20work%20on%20your%20portfolio%20website%20and%20would%20love%20to%20discuss%20a%20possible%20collaboration.%0D%0A%0D%0AMy%20project%20/%20enquiry%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20reply.">lishalai2609@outlook.com</a>
+        <a class="footer-ig" href="https://www.instagram.com/shoelace.23" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.2" cy="6.8" r="0.6" fill="#222222" stroke="none" />
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Lisha Lai</p>
+    </footer>
+
+    <script src="js/i18n.js?v=202611043"></script>
+    <script src="js/main.js?v=202611043"></script>
+  </body>
+</html>
